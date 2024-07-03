@@ -6,6 +6,10 @@
 import Foundation
 import CryptoKit
 
+internal enum AESGCMError: Error {
+    case unsupportedOs
+}
+
 enum AESGCM {
     typealias KeyType = Data
 
@@ -24,14 +28,18 @@ enum AESGCM {
         initializationVector: Data,
         additionalAuthenticatedData: Data
     ) throws -> ContentEncryptionContext {
-        let key = CryptoKit.SymmetricKey(data: encryptionKey)
-        let nonce = try CryptoKit.AES.GCM.Nonce(data: initializationVector)
-        let encrypted = try CryptoKit.AES.GCM.seal(plaintext, using: key, nonce: nonce, authenticating: additionalAuthenticatedData)
-        return ContentEncryptionContext(
-            ciphertext: encrypted.ciphertext,
-            authenticationTag: encrypted.tag,
-            initializationVector: initializationVector
-        )
+        if #available(iOS 13.0, *) {
+            let key = CryptoKit.SymmetricKey(data: encryptionKey)
+            let nonce = try CryptoKit.AES.GCM.Nonce(data: initializationVector)
+            let encrypted = try CryptoKit.AES.GCM.seal(plaintext, using: key, nonce: nonce, authenticating: additionalAuthenticatedData)
+            return ContentEncryptionContext(
+                ciphertext: encrypted.ciphertext,
+                authenticationTag: encrypted.tag,
+                initializationVector: initializationVector
+            )
+        } else {
+            throw AESGCMError.unsupportedOs
+        }
     }
 
     /// Decrypts a cipher text using a given `AES.GCM` algorithm.
@@ -51,10 +59,14 @@ enum AESGCM {
         authenticationTag: Data,
         additionalAuthenticatedData: Data
     ) throws -> Data {
-        let key = CryptoKit.SymmetricKey(data: decryptionKey)
-        let nonce = try CryptoKit.AES.GCM.Nonce(data: initializationVector)
-        let encrypted = try CryptoKit.AES.GCM.SealedBox(nonce: nonce, ciphertext: cipherText, tag: authenticationTag)
-        let decrypted = try CryptoKit.AES.GCM.open(encrypted, using: key, authenticating: additionalAuthenticatedData)
-        return decrypted
+        if #available(iOS 13.0, *) {
+            let key = CryptoKit.SymmetricKey(data: decryptionKey)
+            let nonce = try CryptoKit.AES.GCM.Nonce(data: initializationVector)
+            let encrypted = try CryptoKit.AES.GCM.SealedBox(nonce: nonce, ciphertext: cipherText, tag: authenticationTag)
+            let decrypted = try CryptoKit.AES.GCM.open(encrypted, using: key, authenticating: additionalAuthenticatedData)
+            return decrypted
+        } else {
+            throw AESGCMError.unsupportedOs
         }
     }
+}

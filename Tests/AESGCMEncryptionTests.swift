@@ -27,6 +27,7 @@ import CryptoKit
 
 @testable import JOSESwift
 
+@available(iOS 13.0, *)
 class AESGCMEncryptionTests: XCTestCase {
 
     // Common test data as per [RFC-7516](https://www.rfc-editor.org/rfc/rfc7516#appendix-A.1).

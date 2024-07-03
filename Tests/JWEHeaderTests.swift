@@ -382,8 +382,11 @@ class JWEHeaderTests: XCTestCase {
         XCTAssertThrowsError(try header.set("data".data(using: .utf8)!, forParameter: "data")) { error in
             XCTAssertEqual(error as! JOSESwiftError, JOSESwiftError.invalidHeaderParameterValue)
         }
-        XCTAssertThrowsError(try header.set(UIImage.checkmark, forParameter: "image")) { error in
-            XCTAssertEqual(error as! JOSESwiftError, JOSESwiftError.invalidHeaderParameterValue)
+
+        if #available(iOS 13.0, *) {
+            XCTAssertThrowsError(try header.set(UIImage.checkmark, forParameter: "image")) { error in
+                XCTAssertEqual(error as! JOSESwiftError, JOSESwiftError.invalidHeaderParameterValue)
+            }
         }
 
         XCTAssertNil(header.get(parameter: "data"))

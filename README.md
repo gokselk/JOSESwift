@@ -91,7 +91,7 @@ To integrate JOSESwift into your Xcode project, include it in your `Podfile`:
 
 ``` ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '13.0'
+platform :ios, '12.0'
 use_frameworks!
 
 target '<Your Target Name>' do
