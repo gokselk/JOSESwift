@@ -4,7 +4,9 @@
 //
 
 import Foundation
+#if canImport(CryptoKit)
 import CryptoKit
+#endif
 
 internal enum AESGCMError: Error {
     case unsupportedOs

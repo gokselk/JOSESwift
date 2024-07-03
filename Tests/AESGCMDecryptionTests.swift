@@ -7,7 +7,9 @@
 //
 
 import XCTest
+#if canImport(CryptoKit)
 import CryptoKit
+#endif
 
 @testable import JOSESwift
 
