@@ -79,7 +79,7 @@ class AESGCMDecryptionTests: XCTestCase {
         let plaintext = "Live long and prosper.".data(using: .ascii)!
         let header = JWEHeader(keyManagementAlgorithm: .RSAOAEP256, contentEncryptionAlgorithm: .A256GCM)
         let symmetricEncryptionContext = try AESGCMEncryption(contentEncryptionAlgorithm: .A256GCM, contentEncryptionKey: contentEncryptionKey)
-            .encrypt(header: header, payload: Payload(plaintext))
+            .encrypt(headerData: header.data(), payload: Payload(plaintext))
 
         // Check if the symmetric decryption was successful by using the CryptoKit framework and not the implemented decrypt method.
         let additionalAuthenticatedData = header.data().base64URLEncodedData()
