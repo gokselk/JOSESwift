@@ -106,6 +106,7 @@
 		8A4B08B22213FF0600828536 /* Compressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B08B12213FF0600828536 /* Compressor.swift */; };
 		8A5B190C2BF260F100A250EB /* AESGCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B190B2BF260F100A250EB /* AESGCM.swift */; };
 		9665A24722B0F3E100EAC14A /* ECAsn1IntegerConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665A24622B0F3E100EAC14A /* ECAsn1IntegerConversionTests.swift */; };
+		AE0163272C354C6E009565D0 /* AESGCMDecryptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0163262C354C6E009565D0 /* AESGCMDecryptionTests.swift */; };
 		C803EFE51FA77E3000B71335 /* JWSRSATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C803EFE41FA77E3000B71335 /* JWSRSATests.swift */; };
 		C803EFE91FA7893A00B71335 /* JWSHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C803EFE81FA7893A00B71335 /* JWSHeaderTests.swift */; };
 		C803EFED1FA8849C00B71335 /* JWERSATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C803EFEC1FA8849C00B71335 /* JWERSATests.swift */; };
@@ -244,6 +245,7 @@
 		8A4B08B12213FF0600828536 /* Compressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compressor.swift; sourceTree = "<group>"; };
 		8A5B190B2BF260F100A250EB /* AESGCM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESGCM.swift; sourceTree = "<group>"; };
 		9665A24622B0F3E100EAC14A /* ECAsn1IntegerConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECAsn1IntegerConversionTests.swift; sourceTree = "<group>"; };
+		AE0163262C354C6E009565D0 /* AESGCMDecryptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESGCMDecryptionTests.swift; sourceTree = "<group>"; };
 		C803EFE41FA77E3000B71335 /* JWSRSATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWSRSATests.swift; sourceTree = "<group>"; };
 		C803EFE81FA7893A00B71335 /* JWSHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWSHeaderTests.swift; sourceTree = "<group>"; };
 		C803EFEC1FA8849C00B71335 /* JWERSATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWERSATests.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				C83070041FD1B7390068C5CB /* AESCBCContentDecryptionTests.swift */,
 				65B5B93F23F5604A009C8396 /* DirectEncryptionKeyManagementModeTests.swift */,
 				74618E4F28A6A3080028B066 /* AESGCMEncryptionTests.swift */,
+				AE0163262C354C6E009565D0 /* AESGCMDecryptionTests.swift */,
 			);
 			name = JWE;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				65A9EE4B20FDD7A900E9C566 /* EncrypterDecrypterInitializationTests.swift in Sources */,
 				653365E520ECCB71002630D7 /* JWEDirectEncryptionTests.swift in Sources */,
 				6506D9E920F4CA2000F34DD8 /* SymmetricKeyTests.swift in Sources */,
+				AE0163272C354C6E009565D0 /* AESGCMDecryptionTests.swift in Sources */,
 				6501503723FBDB42000D7D0B /* AESKeyWrapKeyManagementModeTests.swift in Sources */,
 				65684A4D2031935200E56C68 /* RSAPublicKeyToDataTests.swift in Sources */,
 				6575696D203EF9CE004A0EFD /* JWSValidationTests.swift in Sources */,
