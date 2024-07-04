@@ -33,7 +33,14 @@ public struct JWSHeader: JOSEHeader {
             }
             // Forcing the try is ok here, because it is valid JSON.
             // swiftlint:disable:next force_try
-            headerData = try! JSONSerialization.data(withJSONObject: parameters, options: [.sortedKeys])
+            if #available(iOS 13.0, *) {
+                headerData = try! JSONSerialization.data(withJSONObject: parameters, options: [.withoutEscapingSlashes, .sortedKeys])
+            } else {
+                headerData = try! JSONSerialization.data(withJSONObject: parameters, options: [.sortedKeys])
+                // Sanitize escaping slashes manually
+                let headerDataString = String(data: headerData, encoding: .utf8)!
+                headerData = Data(headerDataString.replacingOccurrences(of: "\\/", with: "/").utf8)
+            }
         }
     }
 
